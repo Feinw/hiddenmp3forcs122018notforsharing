@@ -1,4 +1,8 @@
-public class LinkedQueue{
+import java.awt.*;
+import java.awt.image.*;
+import javax.swing.*;
+
+public class LinkedQueue extends GameObject{
 	Node head;
 	Node tail;
 	int ctr=0;
@@ -6,7 +10,7 @@ public class LinkedQueue{
 	public void enqueue(Opponent i){
 		Node bago= new Node(i);
 		if(head==null){
-			head= bago;
+			head=bago;
 			tail=bago;
 		} else{
 			tail.next=bago;
@@ -22,7 +26,7 @@ public class LinkedQueue{
 			}
 			return result;
 		} else{
-			return "none";
+			return null;
 		}
 	}
 
@@ -33,15 +37,15 @@ public class LinkedQueue{
 			Opponent result = head.data;
 			return result;
 		} else{
-			return "none";
+			return null;
 		}
 	}
 
-	public void visualizeQueue(){
+	public void visualizeQueue(Graphics2D g){
 		Node rover=head;
 		ctr=0;
 		while(rover!=null){
-			rover.visualizeNode();
+			rover.visualizeNode(g);
 			rover=rover.next;
 			ctr=ctr+=1;
 		}

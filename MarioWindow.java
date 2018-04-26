@@ -29,8 +29,8 @@ import java.io.*;
  */
 public class MarioWindow extends JFrame implements MouseListener, MouseMotionListener {
 	Vector<GameObject> gameobjects = new Vector<GameObject>();
-	public static int WIDTH = 900;
-	public static int HEIGHT = 1040;
+	public static int WIDTH = 800;
+	public static int HEIGHT = 600;
 	public static final int REFRESH_RATE = 20;
 
 	boolean fpsFlag = true;
