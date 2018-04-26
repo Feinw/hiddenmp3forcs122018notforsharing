@@ -18,8 +18,11 @@ public class Opponents extends GameObject{
 
 	public void run(){
 		while(!q.isEmpty()){
-			MarioWindow.delay(60000);
+			// System.out.println("check");
+			MarioWindow.delay(5000);
+			// System.out.println("check");
 			int random = r.nextInt(100)+1;
+			// System.out.println(random);
 			if(random <= 5){
 				Opponent arriving = new Opponent();
 				q.enqueue(arriving);

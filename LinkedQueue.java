@@ -43,11 +43,11 @@ public class LinkedQueue extends GameObject{
 
 	public void visualizeQueue(Graphics2D g){
 		Node rover=head;
-		ctr=0;
+		ctr=-1;
 		while(rover!=null){
-			rover.visualizeNode(g);
+			ctr+=1;
+			rover.visualizeNode(g,ctr);
 			rover=rover.next;
-			ctr=ctr+=1;
 		}
 		
 	}
