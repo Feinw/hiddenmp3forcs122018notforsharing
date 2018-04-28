@@ -5,11 +5,15 @@ import javax.swing.*;
 
 public class Opponents extends GameObject{
 	LinkedQueue q = new LinkedQueue();
-	Random r;
+	Random r = new Random();
 
 	public Opponents(){
 		Opponent new1 = new Opponent();
+		Opponent new2 = new Opponent();
+		Opponent new3 = new Opponent();
 		q.enqueue(new1);
+		q.enqueue(new2);
+		q.enqueue(new3);
 	}
 
 	public void paint(Graphics2D g){
@@ -19,10 +23,10 @@ public class Opponents extends GameObject{
 	public void run(){
 		while(!q.isEmpty()){
 			// System.out.println("check");
-			MarioWindow.delay(5000);
+			MarioWindow.delay(1000);
 			// System.out.println("check");
 			int random = r.nextInt(100)+1;
-			// System.out.println(random);
+			System.out.println(random);
 			if(random <= 5){
 				Opponent arriving = new Opponent();
 				q.enqueue(arriving);
