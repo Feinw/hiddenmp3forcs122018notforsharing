@@ -7,6 +7,8 @@ public class Opponents extends GameObject{
 	LinkedQueue q = new LinkedQueue();
 	Random r = new Random();
 
+	int user_action=0;
+
 	public Opponents(){
 		Opponent new1 = new Opponent();
 		Opponent new2 = new Opponent();
@@ -22,28 +24,27 @@ public class Opponents extends GameObject{
 
 	public void run(){
 		while(!q.isEmpty()){
-			// System.out.println("check");
-			MarioWindow.delay(1000);
-			// System.out.println("check");
+			MarioWindow.delay(60000);
+			// System.out.println("20 seconds");
 			int random = r.nextInt(100)+1;
-			System.out.println(random);
 			if(random <= 5){
 				Opponent arriving = new Opponent();
 				q.enqueue(arriving);
 				System.out.println("new Opponent");
 			}
 		}
-		System.out.println("1");
 	}
 
-	public void attackFront(int num){
+	public void attackFront(){
 		Opponent front = q.peek();
-		// if(num == 1){
-		// 	front.hp -= 10;
-		// } else if(num == 2){
-		// 	front
-		// }
-		if(front.hp == 0){
+		if(user_action == 1){
+			front.got_basic();
+		}else if(user_action == 2){
+			front.got_special();
+		}else if(user_action == 3){
+			front.got_reckless();
+		}
+		if(front.hp <= 0){
 			System.out.println("Dead 1");
 			q.dequeue();
 			if(q.isEmpty()){
