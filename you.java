@@ -10,16 +10,18 @@ public class you extends GameObject{
 	String last_action;
 	boolean is_alive;
 	boolean stunned;
+	String choice;
 
 	BufferedImage pic;
 
 	public you(){
-		hp = 500;
-		max_hp = 500;
+		hp = 300;
+		max_hp = 300;
 		bullets = 6;
 		is_alive = true;
 		stunned = false;
 		last_action = "";
+		choice = " ";
 
 		pic = MarioWindow.getImage("pikachu.png");
 	}
@@ -29,15 +31,19 @@ public class you extends GameObject{
 		g.fillRoundRect(250,330,530,100,15,15);
 		g.setColor(new Color(0,0,0));
 		g.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		g.drawString("HP: "+Integer.toString(hp)+"/500",270,375);
+		g.drawString("HP: "+hp+"/"+max_hp,270,375);
 		g.drawString("Special Attack Charge: "+Integer.toString(bullets),270,405);
 		g.drawString("Stunned: "+Boolean.toString(stunned).toUpperCase(),530,375);
 		g.drawString("Last Action: "+last_action,530,405);
 		g.setColor(new Color(0,0,0));
 		g.fillRect(380,360,130,20);
 		if(hp>500*0.5){g.setColor(new Color(0,255,0));}else if(hp>500*0.3){g.setColor(new Color(255,255,0));}else{g.setColor(new Color(255,0,0));}
-		g.fillRect(380,360,hp*130/500,20);
+		g.fillRect(380,360,hp*130/max_hp,20);
 		g.drawImage(pic,50,300,null);
+	}
+
+	public void keyPressed(String key){
+		choice=key;
 	}
 
 	public void use_basic(){
@@ -76,7 +82,7 @@ public class you extends GameObject{
 	}
 
 	public void use_reload(){
-		last_action="Reload";
+		last_action="Recharge";
 		bullets=6;
 	}
 

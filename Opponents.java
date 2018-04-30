@@ -20,17 +20,21 @@ public class Opponents extends GameObject{
 
 	public void paint(Graphics2D g){
 		int ctr = q.visualizeQueue(g);
-		g.drawString(Integer.toString(ctr),300,300);
+		g.setColor(new Color(50,50,50));
+		g.setFont(new Font("Comic Sans MS",Font.BOLD,20));
+		g.drawString("Number of Spearow in",100,150);
+		g.drawString("Spearow hoard: "+ctr,100,180);
 	}
 
 	public void run(){
 		while(!q.isEmpty()){
 			MarioWindow.delay(60000);
 			int random = r.nextInt(100)+1;
+			// System.out.println(random);
 			if(random <= 5){
 				Opponent arriving = new Opponent();
 				q.enqueue(arriving);
-				System.out.println("new Opponent");
+				System.out.println("The Spearow hoard called for backup!");
 			}
 		}
 	}
@@ -45,12 +49,8 @@ public class Opponents extends GameObject{
 			front.got_reckless();
 		}
 		if(front.hp <= 0){
-			System.out.println("Dead 1");
+			System.out.println("A wild Spearow fainted!");
 			q.dequeue();
-			if(q.isEmpty()){
-				System.out.println("Done");
-				System.exit(0);
-			} 
 		}
 	}
 }

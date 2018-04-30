@@ -1,10 +1,9 @@
-import java.util.*;
-
 public class Main{
+
 	public static void main(String[] args){
 		
-		Scanner scan = new Scanner(System.in);
 		boolean your_turn = true;
+		String ans=" ";
 
 		Opponents o = new Opponents();
 		you character = new you();
@@ -15,44 +14,53 @@ public class Main{
 		mw.add(o);
 		mw.add(character);
 
-
 		(new Thread(){
 			public void run(){
 				mw.startGame();
 			}
 		}).start();
 
-		while(!o.q.isEmpty()&&character.hp>=0){
-			if(your_turn){
-				if(!character.stunned){
-					char ans = scan.nextLine().charAt(0);
+		bg.music();
 
-					if(ans=='a'){
+		while(!o.q.isEmpty()&&character.hp>0){
+			if(your_turn){
+				mw.delay(20);
+				if(!character.stunned){
+					ans = character.choice;
+
+					if(ans.equals("A")){
 						character.use_basic();
 						o.user_action=1;
 						o.attackFront();
 						o.user_action=0;
-					}else if(ans=='b'){
+						character.choice=" ";
+						your_turn = false;
+					}else if(ans.equals("B")){
 						if(character.use_special()){
 							o.user_action=2;
 							o.attackFront();
 							o.user_action=0;
 						}
-					}else if(ans=='c'){
+						character.choice=" ";
+						your_turn = false;
+					}else if(ans.equals("C")){
 						if(character.use_reckless()){
 							o.user_action=3;
 							o.attackFront();
 							o.user_action=0;
 							character.stunned=true;
 						}
-					}else if(ans=='d'){
+						character.choice=" ";
+						your_turn = false;
+					}else if(ans.equals("D")){
 						character.use_heal();
-					}else if(ans=='e'){
+						character.choice=" ";
+						your_turn = false;
+					}else if(ans.equals("E")){
 						character.use_reload();
+						character.choice=" ";
+						your_turn = false;
 					}
-
-					ans=' ';
-					your_turn = false;
 				} else{
 					character.stunned=false;
 					your_turn = false;
@@ -62,6 +70,11 @@ public class Main{
 				character.got_damaged(damage);
 				your_turn = true;
 			}
+		}
+		if(character.hp<=0){
+			System.out.println("YOU LOSE!");
+		} else{
+			System.out.println("YOU WIN!");
 		}
 		System.exit(0);
 	}
