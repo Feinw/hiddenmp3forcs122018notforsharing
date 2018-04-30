@@ -42,7 +42,7 @@ public class LinkedQueue extends GameObject{
 		}
 	}
 
-	public void visualizeQueue(Graphics2D g){
+	public int visualizeQueue(Graphics2D g){
 		Node rover=head;
 		ctr=-1;
 		while(rover!=null){
@@ -50,6 +50,7 @@ public class LinkedQueue extends GameObject{
 			rover.visualizeNode(g,ctr);
 			rover=rover.next;
 		}
+		return ctr+1;
 		
 	}
 	
@@ -61,8 +62,8 @@ public class LinkedQueue extends GameObject{
 		int damage = 0;
 
 		Node rover=head;
-		Opponent current_opponent = rover.data;
 		while(rover!=null){
+			Opponent current_opponent = rover.data;
 			int move = r.nextInt(4);
 			// System.out.println(move);
 			if(!current_opponent.stunned){

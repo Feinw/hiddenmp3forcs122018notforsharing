@@ -19,13 +19,13 @@ public class Opponents extends GameObject{
 	}
 
 	public void paint(Graphics2D g){
-		q.visualizeQueue(g);
+		int ctr = q.visualizeQueue(g);
+		g.drawString(Integer.toString(ctr),300,300);
 	}
 
 	public void run(){
 		while(!q.isEmpty()){
 			MarioWindow.delay(60000);
-			// System.out.println("20 seconds");
 			int random = r.nextInt(100)+1;
 			if(random <= 5){
 				Opponent arriving = new Opponent();

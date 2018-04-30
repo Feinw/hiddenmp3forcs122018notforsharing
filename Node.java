@@ -10,15 +10,22 @@ public class Node{
 	}
 	
 	public void visualizeNode(Graphics2D g,int ctr){
-		g.setColor(new Color(255,255,255));
-		g.drawString("HP: "+data.hp,data.x_place+10+(ctr*70),data.y_place-20);
 		if(ctr==0){
-			g.setColor(new Color(0,0,0));
-		} else{
 			g.setColor(new Color(255,0,0));
+		} else{
+			g.setColor(new Color(0,255,0));
 		}
-		g.fillRect(data.x_place+(ctr*70),data.y_place,50,50);
-		//System.out.println("place: "+data.x_place+(ctr*50));
+		g.drawImage(data.pic,data.x_place+(ctr*105),data.y_place,null);
+
+		g.setColor(new Color(255,255,255));
+		g.fillRoundRect(data.x_place+(ctr*105),100,90,90,15,15);
+		g.setColor(new Color(0,0,0));
+		g.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		g.drawString("HP: "+data.hp,data.x_place+10+(ctr*105),120);
+		g.drawString("Charge: "+data.bullets,data.x_place+10+(ctr*105),140);
+		g.drawString("Last Action:",data.x_place+10+(ctr*105),160);
+		g.drawString(data.last_action,data.x_place+10+(ctr*105),180);
+
 	}
 	
 }

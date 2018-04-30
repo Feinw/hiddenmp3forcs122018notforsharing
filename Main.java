@@ -8,8 +8,10 @@ public class Main{
 
 		Opponents o = new Opponents();
 		you character = new you();
+		background bg = new background();
 
 		final MarioWindow mw = new MarioWindow();
+		mw.add(bg);
 		mw.add(o);
 		mw.add(character);
 
