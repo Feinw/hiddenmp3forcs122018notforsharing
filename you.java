@@ -46,6 +46,21 @@ public class you extends GameObject{
 		choice=key;
 	}
 
+	public void mouseClicked(int xmouse, int ymouse, int button) {
+
+		if(xmouse >= 60 && xmouse <= 331 && ymouse >= 480 && ymouse <= 512){
+			choice="A";
+		} else if(xmouse >= 60 && xmouse <= 355 && ymouse >= 512 && ymouse <= 541){
+			choice="B";
+		} else if(xmouse >= 60 && xmouse <= 393 && ymouse >= 541 && ymouse <= 570){
+			choice="C";
+		} else if(xmouse >= 439 && xmouse <= 562 && ymouse >= 493 && ymouse <= 525){
+			choice="D";
+		} else if(xmouse >= 439 && xmouse <= 657 && ymouse >= 525 && ymouse <= 557){
+			choice="E";
+		}
+	}
+
 	public void use_basic(){
 		last_action="Basic Attack";
 	}
