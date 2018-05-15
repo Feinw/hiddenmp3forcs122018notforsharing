@@ -64,7 +64,7 @@ public class LinkedQueue extends GameObject{
 		Node rover=head;
 		while(rover!=null){
 			Opponent current_opponent = rover.data;
-			int move = r.nextInt(4);
+			int move = r.nextInt(5);
 			// System.out.println(move);
 			if(!current_opponent.stunned){
 				if(move==0){

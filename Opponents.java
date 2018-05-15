@@ -28,10 +28,10 @@ public class Opponents extends GameObject{
 
 	public void run(){
 		while(!q.isEmpty()){
-			MarioWindow.delay(60000);
+			MarioWindow.delay(10000);
 			int random = r.nextInt(100)+1;
 			// System.out.println(random);
-			if(random <= 5){
+			if(random <= 50){
 				Opponent arriving = new Opponent();
 				q.enqueue(arriving);
 				System.out.println("The Spearow hoard called for backup!");
